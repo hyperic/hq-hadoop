@@ -63,7 +63,7 @@
 
   <server name="Hadoop Name Node">
     <property name="PROC_MAIN_CLASS"
-              value="org.apache.hadoop.hdfs.server.namenode.NameNode"/>
+              value="org.apache.hadoop.dfs.NameNode"/>
 
     <property name="PROC_HOME_PROPERTY"
               value="hadoop.home.dir"/>
@@ -122,6 +122,9 @@
     </service>
 
     <service name="Stats">
+      <property name="MBEAN_CLASS"
+                value="org.apache.hadoop.dfs.namenode.metrics.NameNodeStatistics"/>
+
       <property name="OBJECT_NAME"
                 value="hadoop.dfs:service=NameNode,name=NameNodeStatistics"/>
 
@@ -212,7 +215,7 @@
 
   <server name="Hadoop Data Node">
     <property name="PROC_MAIN_CLASS"
-              value="org.apache.hadoop.hdfs.server.datanode.DataNode"/>
+              value="org.apache.hadoop.dfs.DataNode"/>
 
     <property name="PROC_HOME_PROPERTY"
               value="hadoop.home.dir"/>
@@ -272,7 +275,7 @@
 
     <service name="Stats">
       <property name="MBEAN_CLASS"
-                value="org.apache.hadoop.hdfs.server.datanode.metrics.DataNodeStatistics"/>
+                value="org.apache.hadoop.dfs.datanode.metrics.DataNodeStatistics"/>
 
       <property name="OBJECT_NAME"
                 value="hadoop.dfs:name=DataNodeStatistics,service=*"/>
@@ -376,7 +379,7 @@
 
     <service name="FS Dataset">
       <property name="MBEAN_CLASS"
-                value="org.apache.hadoop.hdfs.server.datanode.FSDataset"/>
+                value="org.apache.hadoop.dfs.FSDataset"/>
 
       <property name="OBJECT_NAME"
                 value="hadoop.dfs:name=FSDatasetStatus,service=*"/>
